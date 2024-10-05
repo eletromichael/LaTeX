@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{article} %define a classe do documento como artigo, com tamanho de fonte 12pt e formato de papel A4 (210 mm de largura por 297 mm de altura).
+
+\usepackage[portuguese]{babel} %para usar o portuguêsno documento, ajustando automaticamente a hifenização e outros aspectos linguísticos. Exemplo: separação silábica de palavras no final da linha 
+
+\usepackage{ragged2e} %justifica o texto sem problemas de espaçamento excessivo entre as palavras.
+
+\usepackage{graphicx} %inclusão de imagens no documento
+
+\usepackage[colorlinks=true,        
+allcolors = blue,  
+citecolor=blue]{hyperref} %ativa a criação de hyperlinks no documento (como links para URLs, citações, seções). As cores dos links são definidas como preto para todos os links e azul para citações.
+
+\usepackage[brazilian,hyperpageref]{backref} %adiciona back-references na bibliografia, indicando em quais páginas as referências foram citadas. O parâmetro hyperpageref cria links para as páginas onde as citações aparecem.
+
+\usepackage[alf]{abntex2cite} %carrega o pacote de citações no estilo ABNT no formato alfabético, usado para citações e referências conforme o padrão brasileiro.
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+%texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+%define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 
+		Nenhuma citação no texto.
+	\or
+		Citado na \textit{página} #2.
+	\else
+		Citado #1 vezes nas \textit{páginas} #2.
+	\fi}
+ 
+\begin{document}
+
+\section*{Lei de Ohm}
+
+\begin{justify}
+
+\hspace{0.5cm}A Lei de Ohm é uma das leis fundamentais da eletricidade, que descreve a relação entre tensão $V$, corrente $I$ e resistência $R$ em um circuito elétrico \cite{ufs2016}. Ela afirma que a corrente que flui por um condutor é diretamente proporcional à tensão aplicada e inversamente proporcional à resistência do condutor \cite{sadiku2015}.
+
+Se você aumentar a tensão aplicada em um circuito enquanto a resistência permanece constante, a corrente aumentará proporcionalmente. Da mesma forma, se aumentar a resistência, a corrente diminuirá, mantendo a tensão constante. A Lei de Ohm é amplamente utilizada para projetar e analisar circuitos elétricos e eletrônicos \cite{boylestad2016}.
+\end{justify}
+
+
+
+
+
+
+\newpage 
+\bibliography{referencias}
+
+
+
+\end{document}
