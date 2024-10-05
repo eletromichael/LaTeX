@@ -1,1 +1,1 @@
-$\dfrac{1}{2}$ e \verb|tengaged|
+$\dfrac{1}{2}$
