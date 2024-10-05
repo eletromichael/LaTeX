@@ -5,5 +5,6 @@
 
 
 
+Regra da Função Composta é dada por $y'(x)=y'(u) \cdot u'(x)$.
 
-$\int_{\textcolor{blue}{a}}^{b} x^2 \dfrac{1}{2}$\\
+Calcule $\sqrt{e^{-\frac{x}{7}}+5}$
