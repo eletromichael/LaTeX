@@ -1,0 +1,481 @@
+%---------------------------------------------
+\documentclass[hyperref={colorlinks=true,    
+allcolors = blue,citecolor=blue}]{beamer} %Define a classe de documento, usada para criar apresentações. A opção hyperref especifica que os links internos devem ter cor azul e que as citações também aparecem em azul.
+%---------------------------------------------
+\usepackage[portuguese]{babel} %Define o idioma e o método de separação silábica no final da linha
+%---------------------------------------------
+\usetheme{Madrid} %Tema da apresentação
+%---------------------------------------------
+\useoutertheme{miniframes} %Aplica um estilo de moldura externa chamado miniframes, que adiciona pequenas molduras nos slides para melhorar a navegação visual.
+%---------------------------------------------
+\usepackage{graphicx} %Inserção de figuras
+%---------------------------------------------
+\usepackage{tikz} %Pacote para desenhos gráficos vetoriais, permitindo a criação de diagramas, formas e gráficos 
+%---------------------------------------------
+\usepackage{subfig} %Permite a inclusão de figuras ou subfiguras dentro de um mesmo ambiente, útil para organizar múltiplas imagens em um único quadro.
+%---------------------------------------------
+\usepackage{subcaption} %Oferece mais controle sobre legendas para subfiguras dentro de uma figura principal.
+%---------------------------------------------
+\usepackage[table]{xcolor} %Permite a coloração de tabelas em LaTeX, oferecendo funcionalidades adicionais para manipulação de cores dentro de tabelas.
+%---------------------------------------------
+\usepackage{float} %Fornece controle avançado para o posicionamento de elementos flutuantes, como figuras e tabelas, permitindo usar o modificador [H] para definir posição exata no documento.
+%---------------------------------------------
+\usepackage{array} %Fornece ferramentas avançadas para o formato de colunas e tabelas, permitindo definir, por exemplo, o alinhamento e o espaçamento de colunas de tabelas de maneira mais flexível.
+%---------------------------------------------
+%Definir exatamente a cor desejada, a estrutura é {nomedacor}{RGB}{nº de Red, nº de Green, nº de Blue}
+\definecolor{vermelho}{RGB}{229,34,21}
+\definecolor{azul}{RGB}{18,115,173}
+%---------------------------------------------
+\usepackage[brazilian,hyperpageref]{backref} %adiciona back-references na bibliografia, indicando em quais páginas as referências foram citadas. O parâmetro hyperpageref cria links para as páginas onde as citações aparecem.
+%---------------------------------------------
+\usepackage[alf]{abntex2cite} %carrega o pacote de citações no estilo ABNT no formato alfabético, usado para citações e referências conforme o padrão brasileiro.
+%---------------------------------------------
+
+
+
+\renewcommand{\backrefpagesname}{Citado nos(s) slide(s):~}
+%texto padrão antes do número dos slides
+\renewcommand{\backref}{}
+%define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 
+		Nenhuma citação no texto.
+	\or
+		Citado no \textit{slide} #2.
+	\else
+		Citado #1 vezes nos \textit{slides} #2.
+	\fi}
+
+%--------------------------------------------- 
+\renewcommand{\arraystretch}{1.6}%entre linhas das células 
+%---------------------------------------------
+\setbeamertemplate{caption}[numbered] %numera automaticamente figuras e tabelas
+%---------------------------------------------
+\setbeamercolor{palette primary}{bg=vermelho,fg=white} %No rodapé da direita para esquerda, primeiro campo, onde está declarada a data. Fonte branca e fundo vermelho.
+%---------------------------------------------
+\setbeamercolor{palette secondary}{bg=azul,fg=white} %No rodapé da direita para esquerda, no segundo campo, onde está o e-mail. Fonte azul (escura "blue" do xcolor) e fundo azul (que foi definido).
+%---------------------------------------------
+\setbeamercolor{palette tertiary}{bg=azul,fg=white} %Topo do sumário simplificado. Fonte branca e fundo azul.
+%---------------------------------------------
+\setbeamercolor{structure}{fg=vermelho} %Cor de itens de um 'itemize'
+%---------------------------------------------
+\setbeamercolor{section in toc}{fg=azul} %Cor dos títulos das seções
+%---------------------------------------------
+%Cor das subseções, fonte e fundo.
+\setbeamercolor{subsection in head/foot}{bg=black,fg=white}
+%---------------------------------------------
+%Cabeçalho
+%---------------------------------------------
+\title[seuemail@gmail.com]{Título da apresentação}
+\date{Cidade, XX de Mês de 202X.}
+\author[Sigla da Faculdade]{Seu nome \\ \vspace{0.59cm}
+Código da disciplina - Nome da disciplina Ano/Semestre\\
+Prof./Profª. Dr./Profª. Nome do(a) docente/orientador(a)}
+%---------------------------------------------
+%Logotipo da universidade na capa da apresentação 
+%---------------------------------------------
+\titlegraphic{
+        \begin{tikzpicture}
+            \draw (-8,5)--(-5,5)--(-5,4)--(-8,4)--(-8,5);
+            \draw (-7.5,4.5) node[right]{Logotipo};
+        \end{tikzpicture}
+}
+
+%O ambiente tikz deve ser substituído pelo \includegraphics[]{} adicionando uma imagem que esteja na raíz do arquivo main ou numa pasta específica de imagens.
+%---------------------------------------------
+\begin{document} 
+%---------------------------------------------
+%Exibição da capa do Beamer
+%---------------------------------------------
+\begin{frame}
+	\titlepage	
+\end{frame}
+%---------------------------------------------
+%Sumário longo é usado como duas colunas 
+%---------------------------------------------
+\begin{frame}
+    \begin{columns}[onlytextwidth,T]
+    \begin{column}{.45\textwidth}
+    \tableofcontents[sections=1-4]
+    \end{column}
+    \begin{column}{.45\textwidth}
+    \tableofcontents[sections=5-9]
+\end{column}    
+\end{columns}
+\end{frame}	
+%-----------------------------
+\begin{frame}
+\section{Contextualização}
+\frametitle{Contextualização}
+
+\begin{itemize}
+    \item Aspecto histórico.
+    \item Descrever o cenário em que o projeto se insere.
+\end{itemize}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Situação-problema}
+\frametitle{Situação-problema}
+
+%Duas colunas: esquerda texto e direita uma imagem, o código \begin{tikzpicture} até \end{tikzpicture} deve ser substituído por \includegraphics[]{}
+
+\begin{columns}
+    \begin{column}{0.47\textwidth}
+        \begin{itemize}
+            \item Problema.
+            \item Estatísticas e dados confiáveis.
+            \item O que foi realizado nos últimos 5 anos para amenizar o problema?
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering            
+        \begin{tikzpicture}
+         \draw (-7,5)--(-7,2)--(-4,2)--(-4,5)--(-7,5);     
+        \end{tikzpicture}
+        \caption{Uma figura autoexplicativa, \cite{geogebra}.}
+        \label{fig:enter-label}
+        \end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Justificativa}
+\frametitle{Justificativa}
+
+Explique de maneira clara e concisa por que o projeto é necessário e qual é a relevância dele no contexto do seu campo de estudo.
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\section{Objetivos}
+\subsection{Objetivo geral}
+\frametitle{Objetivo geral}
+
+Uma única frase que represente o objetivo central do projeto.
+
+Palavras-chave: \textbf{desenvolver}, \textbf{implementar}, \textbf{projetar}, \textbf{criar}.
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Objetivos específicos}
+\frametitle{Objetivo específicos}
+
+\begin{itemize}
+    \item Objetivo específico 1
+    \item Objetivo específico 2
+    \item Objetivo específico 3
+    \item Objetivo específico 4
+    \item Objetivo específico 5    
+\end{itemize}
+
+Palavras-chave: \textbf{analisar}, \textbf{simular}, \textbf{verificar}, \textbf{caracterizar}, \textbf{comparar}, \textbf{avaliar}.
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\section{Cronograma}
+\frametitle{Cronograma}
+
+%Tabela com espaçamento adequado
+
+\begin{table}[!htp]
+\centering
+\begin{tabular}{ | m{1.5cm} | m{25em}| } 
+  \hline
+  Mês & Atividades \\ 
+  \hline
+  Janeiro & \begin{itemize}
+    \item Definição dos objetivos do projeto.
+    \item  Requisitos técnicos e funcionais
+    \item  Levantamento de soluções existentes.
+    \item Escolha de ferramentas (\textit{software} CAD, simulação).\end{itemize} \\  \hline
+  Fevereiro  & \begin{itemize}      
+\item Diagrama de blocos e definição da arquitetura.
+\item Modelagem e simulação (SPICE, ModelSim).
+\item Verificação de viabilidade técnica. 
+  \end{itemize}  \\  \hline  
+\end{tabular}
+\caption{Cronograma: parte 1, \cite{nome_do_autor}.}
+\label{tabela1}
+\end{table}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\frametitle{Cronograma}
+
+\begin{table}[!htp]
+\centering
+\begin{tabular}{ | m{1.5cm} | m{25em}| } 
+  \hline
+  Mês & Atividades \\ 
+  \hline
+  Março & \begin{itemize}
+	\item Projeto detalhado do circuito.
+	\item Desenvolvimento do \textit{layout} PCB ou microeletrônico.
+	\item Uso de ferramentas CAD (Altium, KiCad, Virtuoso).
+\end{itemize} \\  \hline
+  Abril  & \begin{itemize}
+	\item Revisão do layout.
+	\item Envio para fabricação do protótipo de PCB ou fabricação em tecnologia específica (CMOS, FPGA).
+	\item Aquisição de componentes.
+\end{itemize}  \\  \hline  
+\end{tabular}
+\caption{Cronograma: parte 2, \cite{nome_do_autor}.}
+\label{tabela2}
+\end{table}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\frametitle{Cronograma}
+
+\begin{table}[!htp]
+\centering
+\begin{tabular}{ | m{1.5cm} | m{25em}| } 
+  \hline
+  Mês & Atividades \\ 
+  \hline
+  Maio & 
+\begin{itemize}
+	\item Montagem do protótipo e testes de desempenho.	
+	\item Validação dos parâmetros elétricos.
+	\item Debug de eventuais problemas no hardware.
+\end{itemize} \\  \hline
+  Junho & \begin{itemize}
+	\item Elaboração da documentação técnica.
+	\item Relatório de resultados e análise comparativa.
+	\item Preparação da apresentação final.
+	\item Discussão de melhorias e trabalhos futuros.
+\end{itemize}   \\  \hline  
+\end{tabular}
+\caption{Cronograma: parte 3, \cite{nome_do_autor}.}
+\label{tabela2}
+\end{table}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Orçamento}
+\frametitle{Orçamento}
+
+\begin{table}[!htp]
+\centering
+\begin{tabular}{ | m{2.5cm} | m{2.5cm}| m{2.5cm}| m{2.5cm}| } 
+  \hline
+  Componentes & Empresa A & Empresa B & Empresa C \\ 
+  \hline
+  Componente 1 & R\$ 1,00 & R\$ 2,00 & R\$ 3,00 \\  \hline
+  Componente 2 & R\$ 2,00  & R\$ 4,00 & R\$ 6,00  \\  \hline
+  Componente 3 & R\$ 3,00 & R\$ 8,00 & R\$ 9,00 \\  \hline
+  Componente 4 & R\$ 4,00 & R\$  10,00 & R\$ 12,00  \\  \hline
+  Componente 5 & R\$ 5,00  & R\$ 12,00 & R\$ 15,00 \\  \hline 
+  \rowcolor{yellow}Total & R\$ 15,00  & R\$ 36,00 & R\$ 45,00 \\  \hline  
+\end{tabular}
+\caption{Orçamento realizado para o projeto, \cite{radional_2024, eletronica_system_2024, loja_severo_roth_2024}.}
+\label{tabela2}
+\end{table}
+
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\section{Metodologia}
+\frametitle{Metodologia}
+
+Apresente detalhadamente como o projeto será realizado. Descrevendo as etapas do trabalho, as ferramentas, as técnicas e os procedimentos que serão usados para alcançar os objetivos do projeto. O objetivo desse \textit{slide} é demonstrar a clareza do caminho escolhido para solucionar o problema ou desenvolver a solução.
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Desenvolvimento mecânico}
+\frametitle{Desenvolvimento mecânico}
+
+%Duas colunas: esquerda texto e direita uma imagem, o código \begin{tikzpicture} até \end{tikzpicture} deve ser substituído por \includegraphics[]{}
+
+\begin{columns}
+    \begin{column}{0.47\textwidth}
+        \begin{itemize}
+            \item Tamanhos e medidas.
+            \item \textit{Layout}.
+            \item Principais peças.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering            
+        \begin{tikzpicture}
+         \draw (-7,5)--(-7,2)--(-4,2)--(-4,5)--(-7,5);     
+        \end{tikzpicture}
+        \caption{Protótipo do projeto, \cite{tinkercad}.}
+        \label{fig:enter-label}
+        \end{figure}
+    \end{column}
+\end{columns}
+
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Desenvolvimento de hardware}
+\frametitle{Desenvolvimento de \textit{hardware}}
+
+%Duas colunas: esquerda texto e direita uma imagem, o código \begin{tikzpicture} até \end{tikzpicture} deve ser substituído por \includegraphics[]{}
+
+\begin{columns}
+    \begin{column}{0.47\textwidth}
+        \begin{itemize}
+            \item Diagrama de blocos.
+            \item Esquemático elétrico.
+            \item Principais componentes.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering            
+        \begin{tikzpicture}
+         \draw (-7,5)--(-7,2)--(-4,2)--(-4,5)--(-7,5);     
+        \end{tikzpicture}
+        \caption{Diagrama elétrico completo, \cite{tinati}.}
+        \label{fig:enter-label}
+        \end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Desenvolvimento de software}
+\frametitle{Desenvolvimento de \textit{software}}
+
+%Duas colunas: esquerda texto e direita uma imagem, o código \begin{tikzpicture} até \end{tikzpicture} deve ser substituído por \includegraphics[]{}
+
+\begin{columns}
+    \begin{column}{0.47\textwidth}
+        \begin{itemize}
+            \item Plataforma de desenvolvimento.
+            \item Linguagem de programação simplificada.      
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering            
+        \begin{tikzpicture}
+         \draw (-7,5)--(-7,2)--(-4,2)--(-4,5)--(-7,5);     
+        \end{tikzpicture}
+        \caption{Arduino IDE, \cite{arduinoIDE}.}
+        \label{fig:enter-label}
+        \end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+%-----------------------------
+\begin{frame}[fragile]
+\subsection{Desenvolvimento de firmware}
+\frametitle{Desenvolvimento de \textit{firmware}}
+
+%\begin{verbatim} até \end{verbatim} carrega um código específico de programação
+
+\begin{verbatim}
+void setup() {  
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);  
+  delay(1000);                      
+  digitalWrite(LED_BUILTIN, LOW);   
+  delay(1000);                      
+}
+\end{verbatim}
+
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\section{Modelagem matemática}
+\frametitle{Modelagem matemática}
+
+\begin{itemize}
+    \item Explique brevemente o conceito de modelagem matemática no contexto da engenharia elétrica/eletrônica.
+    \item A modelagem matemática consiste em representar sistemas físicos e circuitos elétricos por meio de equações e expressões matemáticas para analisar seu comportamento e desempenho.
+\end{itemize}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Parâmetros e hipóteses}
+\frametitle{Parâmetros e hipóteses}
+
+\begin{itemize}
+    \item Os parâmetros são valores ou constantes que caracterizam as propriedades físicas e operacionais do sistema ou do circuito. Eles são essenciais para a construção das equações matemáticas e influenciam diretamente o comportamento do modelo.
+\end{itemize}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Resolução do modelo}
+\frametitle{Resolução do modelo}
+
+\begin{itemize}
+    \item Mostre como as equações matemáticas derivadas da modelagem são resolvidas para obter respostas práticas sobre o comportamento do sistema. A resolução do modelo envolve aplicar técnicas matemáticas e computacionais para analisar as equações e encontrar as variáveis de interesse (tensão, corrente, potência) em diferentes condições de operação.
+    \item Explique se a resolução é analítica, numérica ou através de simulação computacional.
+\end{itemize}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Validação}
+\frametitle{Validação}
+
+\begin{itemize}
+    \item Inclua gráficos de resultados obtidos a partir da solução analítica, numérica ou simulação.
+    \item Resposta no tempo (curvas de tensão e corrente).
+    \item Resposta em frequência.
+    \item Curvas de potência ou eficiência energética.
+\end{itemize}
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Análise de resultados}
+\frametitle{Análise de resultados}
+
+Mostre a diferença entre uma solução analítica (resposta exata) e a solução numérica aproximada para um circuito com componentes não-ideais.
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\section{Conclusão}
+\frametitle{Conclusão}
+
+Destaque os resultados mais relevantes obtidos no projeto. Mostre como o trabalho contribui para a área ou resolve um problema específico. Destaque a relevância prática e acadêmica.
+
+\end{frame}
+%-----------------------------
+\begin{frame}
+\subsection{Considerações finais}
+\frametitle{Considerações finais}
+
+Retomada dos objetivos específicos, identificar quais foram atingidos e quais não foram atingidos. Elaborar uma discussão e encaminhar trabalhos futuros.
+
+\end{frame}
+%-----------------------------
+%Se excluir a opção do slide de permissão de quebras de quadro vai dar erro na exibição das referências bibliográficas.
+%-----------------------------
+\begin{frame}[allowframebreaks]
+\section{Referências bibliográficas}
+\frametitle{Referências bibliográficas}  
+      
+    \bibliography{referenciais_b}
+    
+\end{frame}
+%-----------------------------
+\end{document}
